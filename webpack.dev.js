@@ -4,8 +4,8 @@ module.exports = {
   mode: "development",
 	devtool: "inline-source-map",
 	devServer: {
-		contentBase: path.join(__dirname, "dist"),
-		port: 3000,
+    static: path.join(__dirname, "dist"),
+		port: 3005,
 		open: true,
 		compress: true
   },

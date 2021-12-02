@@ -242,7 +242,20 @@ console.log('Topic: Arrays');
 //     Replace this element and all its copies with symbol '*'.
 //     Display it in the console.
 
-// const arr = [1, 3, 4, 4, 5, 2, 7, 5, 2, 8]
+// const arr = [1, 3, 4, 4, 5, 2, 7, 5, 2, 8];
+//
+// for (let index in arr) {
+//   const nextIndex = +index + 1;
+//
+//   for (let i = nextIndex; i < arr.length; i += 1) {
+//     if (arr[index] === arr[i]) {
+//       arr[index] = '*';
+//       arr[i] = '*';
+//     }
+//   }
+// }
+//
+// console.log(arr);
 
 
 // Task 18

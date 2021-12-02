@@ -381,3 +381,61 @@ console.log('Topic: Objects');
 //     4. Remove task from the list of tasks.
 //     5. Sort tasks alphabetically in asc or desc order
 //     6. Clear the list of tasks.
+
+// class Task {
+//   constructor(name) {
+//     this.name = name;
+//
+//   }
+//
+//   setCompleted() {
+//     this.status = 'completed';
+//   }
+//
+//   toString() {
+//     return `[${this.status}] ${this.name}`;
+//   }
+// }
+//
+// Task.prototype.status = 'new';
+//
+// class ClassList {
+//   constructor() {
+//     this.tasklist = [];
+//   }
+//
+//   add(...task) { // rest
+//     this.tasklist.push(...task); // spread
+//   }
+//
+//   remove(task) {
+//     const index = this.tasklist.findIndex(t => task === t);
+//
+//     if( index >= 0) {
+//       this.tasklist.splice(index, 1);
+//     }
+//   }
+//
+//   print() {
+//     this.tasklist.forEach(task => console.log(task.toString()));
+//   }
+//
+//   setCompleted(index) {
+//     this.tasklist[index].setCompleted();
+//   }
+//
+//   sort(direction) {
+//     this.tasklist.sort((task1, task2) => {
+//       return direction * task1.name.localeCompare(task2.name);
+//     })
+//   }
+//
+//   clear() {
+//     this.tasklist.length = 0;
+//   }
+// }
+//
+// const task1 = new Task('do this');
+// const task2 = new Task('do that');
+// console.log(task1);
+// console.log(task2);

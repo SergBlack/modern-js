@@ -16,6 +16,13 @@ console.log('Topic: Functions');
 //     a = '1', b = '1', result = '11'
 //     a = 1, b = 1, result = '11'
 
+// concat('1', '1');
+// concat(1, 1);
+//
+// function concat(a, b) {
+//   return `${a}${b}`;
+// }
+
 // Task 2. FDE
 // RU: Создайте функцию comp, которая должна сравнивать значения
 //     двух параметров a и b и возвращать 1, если они равны и -1, если они не равны.
@@ -33,6 +40,8 @@ console.log('Topic: Functions');
 //     a = 'abc', b = 'abc', result = 1
 //     a = 'abC', b = 'abc', result = -1
 
+// const compare = (a, b) => a === b ? 1 : -1;
+
 // Task 3. AF
 // RU: Создайте анонимную функцию, которая должна
 //     выводить сообщение 'message in console' в коноль.
@@ -40,6 +49,18 @@ console.log('Topic: Functions');
 // EN: Create an anonymous function, which should display
 //     message 'message in console' in console.
 //     Use it as an event handler of event click of the button.
+
+// const createPromiseBtn = document.getElementById('btn-create-promise');
+
+// createPromiseBtn.addEventListener('click', () => {
+//   console.log('message in console');
+//   console.log(this); // {}
+// })
+
+// createPromiseBtn.addEventListener('click', function () {
+//   console.log('message in console');
+//   console.log(this); // <button id="btn-create-promise" type="button">Create Promise</button>
+// })
 
 // Task 4. NFE
 // RU: Создайте функцию fibo, которая должна вычислять числа Фибоначчи по формуле
@@ -53,6 +74,34 @@ console.log('Topic: Functions');
 //     according to the formula Fn = 1 * 2 *..*n.
 //     Use Named Function Expression (NFE).
 
+// const getFibonacci = (fibNum) => {
+//   const first = 0;
+//   const second = 1;
+//
+//   if (fibNum === 0) return first;
+//   if (fibNum === 1) return second;
+//
+//   return getFibonacci(fibNum - 2) + getFibonacci(fibNum - 1);
+// }
+//
+// console.log(getFibonacci(11));
+
+// const factorial = (num) => {
+//   if (num < 0) {
+//     return -1;
+//   }
+//
+//   else if (num === 0) {
+//     return 1;
+//   }
+//
+//   else {
+//     return (num * factorial(num - 1));
+//   }
+// }
+//
+// console.log(factorial(5));
+
 // Task 5. FC
 // RU: Объявите две строчные переменные: params и body и проинициализируйте
 //     их строчными значениями, которые представляют список параметров и тело будущей функции.
@@ -62,6 +111,12 @@ console.log('Topic: Functions');
 //     which represent the list of parameters and the body of future function.
 //     Create function using these variables with help of Function Constructor (FC).
 //     Call this function.
+
+// const params = 'a';
+// const body = 'return a;'
+// const func = new Function(params, body);
+//
+// console.log(func(5))
 
 // Task 6. ArF
 // RU: Объявите массив arr = [1, 8, 3, 5, 12, 7, 9, 11]
@@ -73,10 +128,24 @@ console.log('Topic: Functions');
 //     These elements should be less than 100, sort it in ascending order.
 //     Display the result in the console.
 
+// const arr = [1, 8, 3, 5, 12, 7, 9, 11];
+//
+// const square = (list) => list.map(el => el * el).filter(el => el <= 100).sort((a, b) => a - b);
+//
+// console.log(square(arr));
+
 // Task 7. IIFE
 // RU: Создайте конструкцию, с помощью которой выполниться выше реализованная
 //     функция conc.
 // EN: Create a construction which allows to run the above function conc.
+
+// (function () {
+//   console.log(concat('1', 1));
+// })()
+//
+// !function () {
+//   console.log(concat('1', 1));
+// }()
 
 // Task 8. Arguments Object, Rest
 // RU: Создайте функцию parts, которая принимает неизвестное количество параметров.
@@ -104,18 +173,33 @@ console.log('Topic: Functions');
 //               red, blue, yellow, black."
 //     result = ["cherries, oranges, apples, bananas", "red, blue, yellow, black"].
 
+// const param1 = "This is the first sentence. This is a sentence with a list of items: cherries," +
+//   " oranges, apples, bananas."
+// const param2 = "This is the second sentence. This is a sentence with a list of items: red, blue," +
+//       " yellow, black."
+//
+// const parts = function () {
+//   return [...arguments].map(el => {
+//     const start = el.indexOf(':');
+//     const end = el.lastIndexOf('.');
+//
+//     return el.slice(start, end);
+//   })
+// }
+//
+// console.log(parts(param1, param2));
 
 // Task 9. Optional Arguments
 // RU: Создайте функцию find(testString, test), которая должна возвращать позицию
-//     строки test в строке testString. 
-//     Если второй параметр не задан, используйте test = testString. 
+//     строки test в строке testString.
+//     Если второй параметр не задан, используйте test = testString.
 //     Используйте Function Definition Expression (FDE).
 //     Тестовые данные:
 //     testString = 'abc', test ='b', result = 1
 //     testString = 'abc', result = 0
 //     testString = 'abc', test = 'd', result = -1
 //     testString = 'abc', test='a', test2='b', result = 0
-// EN: Create a function find(testString, test), which should return the position 
+// EN: Create a function find(testString, test), which should return the position
 //     of test string within testString.
 //     If the second parameter is omitted, use default value  test = testString.
 //     Use Function Definition Expression (FDE).
@@ -139,11 +223,11 @@ console.log('Topic: Functions');
 //     str.isNonEmptyStr(1), result = false
 //     str(), console.log('String is empty')
 //     str('a'), console.log('String is non empty')
-// EN: Create a function str(), which takes one string parameter and display in the console 
-//     string 'String is non empty' if the paramer is not empty string, otherwise it 
+// EN: Create a function str(), which takes one string parameter and display in the console
+//     string 'String is non empty' if the paramer is not empty string, otherwise it
 //     should display 'String is empty'.
 //     Create a function str.isNonEmptyStr() as a property of function str. This function
-//     should take one parameter and return true, when the value of parameter is not empty 
+//     should take one parameter and return true, when the value of parameter is not empty
 //     string, otherwise it should return false. Use this function to implement if statement
 //     in the str() funtion.
 //     Test Data:
@@ -155,16 +239,16 @@ console.log('Topic: Functions');
 //     str('a'), console.log('String is non empty')
 
 // Task 11. Function as a Parameter
-// RU: Создайте функцию toConsole с одним параметром. Функция должна выводить 
+// RU: Создайте функцию toConsole с одним параметром. Функция должна выводить
 //     значение параметра в консоль.
 //     Создайте функцию toAlert с одним параметром. Функция должна выводить значение
 //     параметра используя alert().
 //     Создайте функцию splitToWords с двумя параметрами: msg и callback.
-//     Функция должна разделять строку на слова и использовать колбек для отображения слов. 
+//     Функция должна разделять строку на слова и использовать колбек для отображения слов.
 //     Если второй параметр не задан, функция должна возвращать массив слов.
-// EN: Create a function toConsole with one parameter. The function should display 
+// EN: Create a function toConsole with one parameter. The function should display
 //     the value of the parameter in the console.
-//     Create a function toAlert with one parameter. The function should display 
+//     Create a function toAlert with one parameter. The function should display
 //     the value of the parameter using alert.
 //     Create a function splitToWords, which takes two parameters: msg и callback.
 //     The function should split the value of parameter msg by the words and use callback
@@ -199,34 +283,34 @@ console.log('Topic: Functions');
 // Task 13. Function as a Result
 // RU: Задание аналогично предыдущему, но в этот раз функция copyright получает знак
 //     как свой параметр.
-// EN: This task is similar to the previous one, but in this case the function copyright takes 
+// EN: This task is similar to the previous one, but in this case the function copyright takes
 //     one parameter - sign (© ('\u00A9')).
 
 // Task 14. Function as a Method
 // RU: Создайте литерал объекта employee со следующими свойствами:
-//     name: 'Ann', 
+//     name: 'Ann',
 //     work – функция, которая выводит в консоль сообщение "I am Ann. I am working..."
 //     Тестовые данные
 //     employee.work()  результат в консоле "I am Ann. I am working..."
 // EN: Create an object literal employee with the following properties:
-//     name: 'Ann', 
-//     work – function, which display in the console the following string 
+//     name: 'Ann',
+//     work – function, which display in the console the following string
 //     "I am Ann. I am working..."
 //     Test Data:
 //     employee.work()  result in the console "I am Ann. I am working..."
 
 // Task 15. Borrow Method
-// RU: Создайте литерал объекта person со свойством name. 
+// RU: Создайте литерал объекта person со свойством name.
 //     Вызовите метод work объекта employee из предыдущего задания.
 // EN: Create an object literal person with property name.
 //     Call the method work of the object employee from the previous task.
 
 // Task 16. Memoization
-// RU: Создать функцию fiboMemo для вычисления чисел Фибоначчи по формуле 
+// RU: Создать функцию fiboMemo для вычисления чисел Фибоначчи по формуле
 //     F0 = 0, F1 = 1, Fn = Fn-1 + Fn-2. Функция должна хранить те значения,
 //     которые она уже вычисляла. Используя методы console.time(), console.timeEnd()
 //     определите время вычисления функции fibo и функции fiboMemo.
 // EN: Create a function fiboMemo for calculating Fibonacci numbers according to the formula
 //     F0 = 0, F1 = 1, Fn = Fn-1 + Fn-2. The function should store the values computed earlier.
-//     Using methods console.time(), console.timeEnd() calculate the time for function fibo 
+//     Using methods console.time(), console.timeEnd() calculate the time for function fibo
 //     and fiboMemo.

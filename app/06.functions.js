@@ -209,6 +209,15 @@ console.log('Topic: Functions');
 //     testString = 'abc', test = 'd', result = -1
 //     testString = 'abc', test='a', test2='b', result = 0
 
+// function find(testString, test = testString) {
+//   return testString.indexOf(test);
+// }
+//
+// console.log(find('abc', 'b'));
+// console.log(find('abc'));
+// console.log(find('abc', 'd'));
+// console.log(find('abc', 'a'));
+
 // Task 10. Function as an Object
 // RU: Создайте функцию str(), которая принимает один строчный параметр и
 //     выводит в консоль 'String is non empty', если параметр - непустая строка и
@@ -237,6 +246,23 @@ console.log('Topic: Functions');
 //     str.isNonEmptyStr(1), result = false
 //     str(), console.log('String is empty')
 //     str('a'), console.log('String is non empty')
+
+// function str(s) {
+//   if (str.isNonEmptyStr(s)) {
+//     console.log('String is non empty');
+//   } else {
+//     console.log('String is empty');
+//   }
+// }
+//
+// str.isNonEmptyStr = s => typeof s === 'string' && s.length > 0;
+//
+// str.isNonEmptyStr();
+// str.isNonEmptyStr('');
+// str.isNonEmptyStr('a');
+// str.isNonEmptyStr(1);
+// str();
+// str('a');
 
 // Task 11. Function as a Parameter
 // RU: Создайте функцию toConsole с одним параметром. Функция должна выводить
@@ -267,6 +293,26 @@ console.log('Topic: Functions');
 //     console.log( splitToWords("My very long text msg") );
 //     result = ['My', 'very', 'long', 'text', 'msg']
 
+// function toConsole(s) {
+//   console.log(s);
+// }
+//
+// function toAlert(s) {
+//   alert(s);
+// }
+//
+// function splitToWords(msg, callback) {
+//   const splitVal = msg.split(' ');
+//
+//   if (typeof callback === 'function') {
+//     splitVal.forEach(e => callback(e));
+//   } else {
+//     console.log(splitVal);
+//   }
+// }
+//
+// splitToWords("My very long text msg", toAlert);
+// splitToWords("My very long text msg");
 
 // Task 12. Function as a Result
 // RU: Создайте функцию copyright, которая должна возвращать другую функцию с
@@ -280,11 +326,25 @@ console.log('Topic: Functions');
 //     Test Data:
 //     console.log( copyright()('EPAM') ); result = © EPAM.
 
+// function copyright() {
+//   return function(value) {
+//     return `\u00A9 ${value}`;
+//   }
+// }
+// console.log(copyright()('EPAM'));
+
 // Task 13. Function as a Result
 // RU: Задание аналогично предыдущему, но в этот раз функция copyright получает знак
 //     как свой параметр.
 // EN: This task is similar to the previous one, but in this case the function copyright takes
 //     one parameter - sign (© ('\u00A9')).
+
+// function copyright(sign) {
+//   return function(value) {
+//     return `${sign} ${value}`;
+//   }
+// }
+// console.log(copyright('\u00A9')('EPAM'));
 
 // Task 14. Function as a Method
 // RU: Создайте литерал объекта employee со следующими свойствами:
@@ -299,11 +359,26 @@ console.log('Topic: Functions');
 //     Test Data:
 //     employee.work()  result in the console "I am Ann. I am working..."
 
+// const employee = {
+//   name: 'Ann',
+//   work() {
+//     console.log(`I am ${this.name}. I am working...`);
+//   }
+// }
+//
+// employee.work();
+
 // Task 15. Borrow Method
 // RU: Создайте литерал объекта person со свойством name.
 //     Вызовите метод work объекта employee из предыдущего задания.
 // EN: Create an object literal person with property name.
 //     Call the method work of the object employee from the previous task.
+
+// const person = {
+//   name: 'Bill',
+// }
+//
+// employee.work.call(person);
 
 // Task 16. Memoization
 // RU: Создать функцию fiboMemo для вычисления чисел Фибоначчи по формуле
@@ -314,3 +389,42 @@ console.log('Topic: Functions');
 //     F0 = 0, F1 = 1, Fn = Fn-1 + Fn-2. The function should store the values computed earlier.
 //     Using methods console.time(), console.timeEnd() calculate the time for function fibo
 //     and fiboMemo.
+
+// const fibonacci = (function() {
+//   const cache = [0, 1];
+//
+//   return function fiboP(value){
+//     const cachedValue = cache[value];
+//
+//     if(typeof cachedValue !== 'undefined') {
+//       return cachedValue;
+//     } else {
+//       const result = fiboP(value - 2) + fiboP(value - 1);
+//       cache[value] = result;
+//       return result;
+//     }
+//   };
+// })();
+//
+// const getFibonacci = (fibNum) => {
+//   const first = 0;
+//   const second = 1;
+//
+//   if (fibNum === 0) return first;
+//   if (fibNum === 1) return second;
+//
+//   return getFibonacci(fibNum - 2) + getFibonacci(fibNum - 1);
+// }
+//
+// console.time('memo');
+// for (let i = 0; i < 50; i++) {
+//   console.log(fibonacci(i));
+// }
+// console.timeEnd('memo');
+//
+//
+// console.time('non memo');
+// for (let i = 0; i < 50; i++) {
+//   console.log(getFibonacci(i));
+// }
+// console.timeEnd('non memo');
